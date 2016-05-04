@@ -1,7 +1,7 @@
 # scihub_netherlands
 SciHub download data (Sept '15 - Feb '16) for the Netherlands (filtered from original Sci-Hub download data)
 
-This is a selection of the original Sci-Hub download data, only containing downloads attributed to the Netherlands (through IP-geolocation). I filtered these data from the orginal (2,7 GB, 28 million rows) dataset to make it more manageable for people interested in this subset to analyse the data. 
+This is a selection of the original Sci-Hub download data, only containing downloads attributed to the Netherlands (through IP-geolocation). I filtered these data from the orginal (2.7 GB, 28 million rows) dataset to make it more manageable for people interested in this subset to analyse the data. 
 
 The data is in csv format (UTF-8 encoded) containing 6 columns and 168,877 rows. An ods-file containing the same data is also provided. 
 
