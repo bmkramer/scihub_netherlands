@@ -1,10 +1,11 @@
-# scihub_netherlands
-SciHub download data (Sept '15 - Feb '16) for the Netherlands (filtered from original Sci-Hub download data)
+# scihub_netherlands - subset Utrecht 
+This branch contains a subset of the SciHub download data (Sept '15 - Feb '16) for the Netherlands (filtered from original Sci-Hub download data), namely the set of unique DOIs whose download is attributed (by IP-geolocation) to Utrecht, The Netherlands. 
 
-This is a selection of the original Sci-Hub download data, only containing downloads attributed to the Netherlands (through IP-geolocation). I filtered these data from the orginal (2.7 GB, 28 million rows) dataset to make it more manageable for people interested in this subset to analyse the data. 
+For each DOI, publisher availability, either through institutional online journal subscriptions or through Gold Open Access/otherwise free from publishers was checked. Information on Utrecht University [library subscriptions] (http://sfx.library.uu.nl/utrecht/az) is publicly available.
 
-The data is in csv format (UTF-8 encoded) containing 6 columns and 168,877 rows. An ods-file containing the same data is also provided. 
+More information is provided in this blog post: Sci-Hub: access or convenience? A Utrecht case study (part 2)] (add link upon publication).
 
+The data is in csv format (UTF-8 encoded) containing 7 columns and 2968 rows. 
 
 ### Where's the original data?
 It's available at DataDryad [Download it from there](http://dx.doi.org/10.5061/dryad.q447c).
