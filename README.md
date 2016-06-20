@@ -3,7 +3,7 @@ This branch contains a subset of the SciHub download data (Sept '15 - Feb '16) f
 
 For each DOI, publisher availability, either through institutional online journal subscriptions or through Gold Open Access/otherwise free from publishers was checked. Information on Utrecht University [library subscriptions] (http://sfx.library.uu.nl/utrecht/az) is publicly available.
 
-More information is provided in this blog post: Sci-Hub: access or convenience? A Utrecht case study (part 2)] (https://im2punt0.wordpress.com/2016/06/20/sci-hub-access-or-convenience-a-utrecht-case-study-part-2/).
+More information is provided in this blog post: [Sci-Hub: access or convenience? A Utrecht case study (part 2)] (https://im2punt0.wordpress.com/2016/06/20/sci-hub-access-or-convenience-a-utrecht-case-study-part-2/).
 
 The data is in csv format (UTF-8 encoded) containing 7 columns and 2968 rows. 
 
