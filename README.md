@@ -2,7 +2,7 @@
 
 My first R script - please be kind :-) 
 
-#Description
+##Description
 This script uses the Dissemin API to get information on online availability (gold and green Open Access) of academic articles, identified by their DOI, as well as publisher policies on archiving. 
 
 [Dissemin API documentation] (http://dev.dissem.in/api.html)
@@ -12,7 +12,11 @@ This script uses the Dissemin API to get information on online availability (gol
 This script uses as input a csv file with a list of doi's in a column labeled "DOI"
 The output is a dataframe (written to a csv file) with for each DOI, the following information from the Dissemin API:
   - original DOI that was used as input
-  - classification = self-archiving policy of the publisher: "OA" (available from the publisher), "OK" (some version can be shared), "UNK" (unknown/unclear sharing policy), "NOK" (restrictive sharing policy).
+  - classification = self-archiving policy of the publisher: 
+    - "OA" (available from the publisher) 
+    - "OK" (some version can be shared)
+    - "UNK" (unknown/unclear sharing policy)
+    - "NOK" (restrictive sharing policy).
   - publisher
   - journal title
   - issn
@@ -23,8 +27,8 @@ The output is a dataframe (written to a csv file) with for each DOI, the followi
   - URL where freely available version can be found, if any. 
 
 ##Caveats / issues
-  1) the script uses loops (bad R!), if someone can improve this using an apply-function, you're most welcome! 
-  2) the script currently stops executing when it encounters a HTTP status 404 for one of the DOIs checked. 
-    This could probably be circumvented with try.catch(), but I don't know how (yet)
-    In the current setup, the script can be manually rerun from line 42, skipping the offending DOI by resetting the loop counter in line 63.
+  - The script uses loops (bad R!), if someone can improve this using an apply-function, you're most welcome! 
+  - The script currently stops executing when it encounters a HTTP status 404 for one of the DOIs checked. 
+    - This could probably be circumvented with try.catch(), but I don't know how (yet)
+    - In the current setup, the script can be rerun manually rerun, skipping the offending DOI by resetting the loop counter.
 
