@@ -50,14 +50,13 @@ naIfNull <- function(cell){
 #define doi.character as character for doi to be included as such in the vector;
 #use 'if else' escape clauses because not all values are always present in Dissemin API output.
 getData <- function(doi){
-  doi_character = as.character(doi)
-  url = paste("http://dissem.in/api/",doi,sep="")
-  print(url)
-  raw_data = GET(url)
-  rd  = httr::content(raw_data)
-  paper = rd$paper
-  first_record = paper$records[[1]]
-  result = c(
+  doi_character <- as.character(doi)
+  url <- paste("http://dissem.in/api/",doi,sep="")
+  raw_data <- GET(url)
+  rd <- httr::content(raw_data)
+  paper <- rd$paper
+  first_record <- paper$records[[1]]
+  result <- c(
     doi_character,
     naIfNull(paper$classification),
     naIfNull(first_record$publisher),
