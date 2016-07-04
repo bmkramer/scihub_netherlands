@@ -1,13 +1,30 @@
-# scihub_netherlands
-SciHub download data (Sept '15 - Feb '16) for the Netherlands (filtered from original Sci-Hub download data)
+# Dissemin API - R script
 
-This is a selection of the original Sci-Hub download data, only containing downloads attributed to the Netherlands (through IP-geolocation). I filtered these data from the orginal (2.7 GB, 28 million rows) dataset to make it more manageable for people interested in this subset to analyse the data. 
+My first R script - please be kind :-) 
 
-The data is in csv format (UTF-8 encoded) containing 6 columns and 168,877 rows. An ods-file containing the same data is also provided. 
+#Description
+This script uses the Dissemin API to get information on online availability (gold and green Open Access) of academic articles, identified by their DOI, as well as publisher policies on archiving. 
 
+[Dissemin API documentation] (http://dev.dissem.in/api.html)
+[Dissemin documentation] (https://media.readthedocs.org/pdf/dissemin/latest/dissemin.pdf)
 
-### Where's the original data?
-It's available at DataDryad [Download it from there](http://dx.doi.org/10.5061/dryad.q447c).
+##Input / output
+This script uses as input a csv file with a list of doi's in a column labeled "DOI"
+The output is a dataframe (written to a csv file) with for each DOI, the following information from the Dissemin API:
+  - original DOI that was used as input
+  - classification = self-archiving policy of the publisher: "OA" (available from the publisher), "OK" (some version can be shared), "UNK" (unknown/unclear sharing policy), "NOK" (restrictive sharing policy).
+  - publisher
+  - journal title
+  - issn
+  - journal policy on sharing preprint version
+  - journal policy on sharing postprint version
+  - journal policy on sharing publisher version
+  - date of publication
+  - URL where freely available version can be found, if any. 
 
-### License
-The Sci-Hub data is [CC-Zero, as indicated on DataDryad](http://datadryad.org/resource/doi:10.5061/dryad.q447c). 
+##Caveats / issues
+  1) the script uses loops (bad R!), if someone can improve this using an apply-function, you're most welcome! 
+  2) the script currently stops executing when it encounters a HTTP status 404 for one of the DOIs checked. 
+    This could probably be circumvented with try.catch(), but I don't know how (yet)
+    In the current setup, the script can be manually rerun from line 42, skipping the offending DOI by resetting the loop counter in line 63.
+
