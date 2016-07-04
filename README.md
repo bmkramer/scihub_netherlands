@@ -10,6 +10,7 @@ This script uses the Dissemin API to get information on online availability (gol
 
 ##Input / output
 This script uses as input a csv file with a list of doi's in a column labeled "DOI"
+
 The output is a dataframe (written to a csv file) with for each DOI, the following information from the Dissemin API:
   - original DOI that was used as input
   - classification = self-archiving policy of the publisher: 
