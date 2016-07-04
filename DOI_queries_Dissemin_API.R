@@ -25,9 +25,10 @@
 #skipping the offending DOI by resetting the loop counter in line 63.
 
 #install packages
-install.packages("rjson")
-
+#install.packages("rjson")
+#install.packages("httpcache")
 require(rjson)
+require(httpcache)
 #import csv with DOIs; csv should contain list of doi's in column labeled "DOI"
 #DOI_input <- read.csv(file="xxx.csv", header=TRUE, sep=",")
 
@@ -51,8 +52,9 @@ naIfNull <- function(cell){
 getData <- function(doi){
   doi_character = as.character(doi)
   url = paste("http://dissem.in/api/",doi,sep="")
-  raw.data = readLines(url, warn="F") 
-  rd  = fromJSON(raw.data)
+  print(url)
+  raw_data = GET(url)
+  rd  = httr::content(raw_data)
   paper = rd$paper
   first_record = paper$records[[1]]
   result = c(
