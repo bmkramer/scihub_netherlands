@@ -37,3 +37,4 @@ The output is a dataframe (written to a csv file) with for each DOI, the followi
     I'm sure there is a more elegant solution! 
 
 ##The script
+[DOI_queries_Dissemin_API.R](https://github.com/bmkramer/scihub_netherlands/blob/Dissemin_API_R/DOI_queries_Dissemin_API.R)
