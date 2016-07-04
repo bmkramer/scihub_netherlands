@@ -29,7 +29,7 @@ The output is a dataframe (written to a csv file) with for each DOI, the followi
   - URL where freely available version can be found, if any. 
 
 ##Caveats / issues
-  - The script uses loops (bad R!), if someone can improve this using an apply-function, you're most welcome! 
+  - The script uses loops (bad R!), if someone can improve this using an apply-function, please do! 
   - The script currently stops executing when it encounters a HTTP status 404 for one of the DOIs checked. 
     - This could probably be circumvented with try.catch(), but I don't know how (yet)
     - In the current setup, the script can be rerun manually, skipping the offending DOI by resetting the loop counter. 
