@@ -36,3 +36,4 @@ The output is a dataframe (written to a csv file) with for each DOI, the followi
    
     I'm sure there is a more elegant solution! 
 
+##The script
