@@ -30,7 +30,7 @@
 require(rjson)
 require(httpcache)
 #import csv with DOIs; csv should contain list of doi's in column labeled "DOI"
-#DOI_input <- read.csv(file="xxx.csv", header=TRUE, sep=",")
+DOI_input <- read.csv(file="xxx.csv", header=TRUE, sep=",")
 
 #create empty dataframe with 10 columns
 df <- data.frame(matrix(nrow = 1, ncol = 10))
