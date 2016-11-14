@@ -21,12 +21,12 @@
 #1) the script uses loops (bad R!), if someone can improve this using an apply-function, you're most welcome! 
 #2) the script currently stops executing when it encounters a HTTP status 404 for one of the DOIs checked.
 #this could probably be circumvented with try.catch(), but I don't know how (yet);
-#in the current setup, the script can be manually rerun from line 42, 
-#skipping the offending DOI by resetting the loop counter in line 63.
+#in the current setup, the script can be manually rerun from line 40, 
+#skipping the offending DOI by resetting the loop counter in line 77.
 
 #install packages
-#install.packages("rjson")
-#install.packages("httpcache")
+install.packages("rjson")
+install.packages("httpcache")
 require(rjson)
 require(httpcache)
 #import csv with DOIs; csv should contain list of doi's in column labeled "DOI"
