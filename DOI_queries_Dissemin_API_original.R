@@ -1,4 +1,4 @@
-#this script uses the Dissemin API to get information on online availability (gold and green Open Access) 
+#this script uses the Dissemin API to get information on online availability (gold and green Open Access)  
 #of academic articles, identified by their DOI, as well as publisher policies on archiving. 
 #Dissemin API documentation: http://dev.dissem.in/api.html
 #Dissemin documentation: https://media.readthedocs.org/pdf/dissemin/latest/dissemin.pdf
