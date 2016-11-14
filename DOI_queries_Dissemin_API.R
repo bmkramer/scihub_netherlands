@@ -48,7 +48,7 @@ naIfNull <- function(cell){
 #define function to get data from Dissemin API and construct vector with relevant variables;
 #this vector will become a row in the final dataframe to be produced;
 #define doi.character as character for doi to be included as such in the vector;
-#use 'if else' escape clauses because not all values are always present in Dissemin API output.
+#employ naIfNull function because not all values are always present in Dissemin API output.
 getData <- function(doi){
   doi_character <- as.character(doi)
   url <- paste("http://dissem.in/api/",doi,sep="")
