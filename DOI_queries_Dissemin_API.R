@@ -25,8 +25,10 @@
 #skipping the offending DOI by resetting the loop counter in line 63.
 
 #install packages
-install.packages("rjson")
-
+#install.packages("rjson")
+#install.packages("httpcache")
+require(rjson)
+require(httpcache)
 #import csv with DOIs; csv should contain list of doi's in column labeled "DOI"
 DOI_input <- read.csv(file="xxx.csv", header=TRUE, sep=",")
 
@@ -35,26 +37,38 @@ df <- data.frame(matrix(nrow = 1, ncol = 10))
 #set column names of dataframe
 colnames(df) = c("DOI", "Classification", "Publisher", "Journal", "ISSN", "Policy_preprint", "Policy_postprint", "Policy_published", "Date", "PDF_URL")
 
+naIfNull <- function(cell){
+  if(is.null(cell)) {
+    return(NA)
+  } else {
+    return(cell)
+  }
+}
+
 #define function to get data from Dissemin API and construct vector with relevant variables;
 #this vector will become a row in the final dataframe to be produced;
 #define doi.character as character for doi to be included as such in the vector;
 #use 'if else' escape clauses because not all values are always present in Dissemin API output.
 getData <- function(doi){
-  require(rjson)
-  doi.character <- as.character(doi)
-  url=paste("http://dissem.in/api/",doi,sep="")
-  raw.data <- readLines(url, warn="F") 
-  rd  <- fromJSON(raw.data)
-  rd.classification <- if(is.null(rd$paper$classification)) NA else rd$paper$classification
-  rd.publisher <- if(is.null(rd$paper$records[[1]]$publisher)) NA else rd$paper$records[[1]]$publisher
-  rd.journal <- if(is.null(rd$paper$records[[1]]$journal)) NA else rd$paper$records[[1]]$journal
-  rd.issn <- if(is.null(rd$paper$records[[1]]$issn)) NA else rd$paper$records[[1]]$issn
-  rd.policy.preprint <- if(is.null(rd$paper$records[[1]]$policy$preprint)) NA else rd$paper$records[[1]]$policy$preprint
-  rd.policy.postprint <- if(is.null(rd$paper$records[[1]]$policy$postprint)) NA else rd$paper$records[[1]]$policy$postprint
-  rd.policy.published <- if(is.null(rd$paper$records[[1]]$policy$published)) NA else rd$paper$records[[1]]$policy$published
-  rd.date <- if(is.null(rd$paper$date)) NA else rd$paper$date
-  rd.pdf_url <- if(is.null(rd$paper$pdf_url)) NA else rd$paper$pdf_url
-  row <- c(doi.character, rd.classification, rd.publisher, rd.journal, rd.issn, rd.policy.preprint, rd.policy.postprint, rd.policy.published, rd.date, rd.pdf_url) 
+  doi_character <- as.character(doi)
+  url <- paste("http://dissem.in/api/",doi,sep="")
+  raw_data <- GET(url)
+  rd <- httr::content(raw_data)
+  paper <- rd$paper
+  first_record <- paper$records[[1]]
+  result <- c(
+    doi_character,
+    naIfNull(paper$classification),
+    naIfNull(first_record$publisher),
+    naIfNull(first_record$journal),
+    naIfNull(first_record$issn),
+    naIfNull(first_record$policy$preprint),
+    naIfNull(first_record$policy$postprint),
+    naIfNull(first_record$policy$published),
+    naIfNull(paper$date),
+    naIfNull(paper$pdf_url)
+    )
+  return(result)
 }
 
 #fill dataframe df (from 2nd row onwards) with API results for each DOI from original dataset
