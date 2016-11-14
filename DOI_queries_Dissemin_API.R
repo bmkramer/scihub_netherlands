@@ -78,7 +78,7 @@ for (i in 1:100){
   df <- rbind(df,getData(DOI_input$DOI[i]))
 }
 
-#alternatively, to try out the script, block lines 63-65, 
+#alternatively, to try out the script, block lines 77-79, 
 #and run the script (from line 34) with lines 69-71 instead, using 3 example DOIs with different outputs. 
 #df <- rbind(df,getData("10.1016/j.paid.2009.02.013"))
 #df <- rbind(df,getData("10.1001/archderm.1986.01660130056025"))
