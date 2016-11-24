@@ -1,6 +1,6 @@
-# Dissemin API - R script
+# OADOI API - R script
 
-My first R script - please be kind :-) 
+Based on a similar attempt for [querying the Dissemin API] (https://github.com/bmkramer/scihub_netherlands/blob/Dissemin_API_R/README.md) 
 
 ##Description
 This script uses the Dissemin API to get information on online availability (gold and green Open Access) of academic articles, identified by their DOI, as well as publisher policies on archiving. 
