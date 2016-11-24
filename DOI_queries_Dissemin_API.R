@@ -73,13 +73,15 @@ getData <- function(doi){
 
 #fill dataframe df (from 2nd row onwards) with API results for each DOI from original dataset
 #use counter approach to be able to test/run on subsets of data, and to manually jump any rows giving a 404 error
-#reset counter range to fit number of rows in source file
+#when jumping rows by changing counter, block lines 28-38 before rerunning the script
+#this way, results are added to the same dataframe 
+#reset counter range to fit number of rows in source file.
 for (i in 1:100){
   df <- rbind(df,getData(DOI_input$DOI[i]))
 }
 
 #alternatively, to try out the script, block lines 77-79, 
-#and run the script (from line 34) with lines 69-71 instead, using 3 example DOIs with different outputs. 
+#and run the script with lines 83-85 instead, using 3 example DOIs with different outputs. 
 #df <- rbind(df,getData("10.1016/j.paid.2009.02.013"))
 #df <- rbind(df,getData("10.1001/archderm.1986.01660130056025"))
 #df <- rbind(df,getData("10.1002/0471140856.tx2306s57"))
