@@ -16,11 +16,11 @@
 #- URL: canonical DOI URL 
 
 #caveats / issues
-#1) the script uses loops (bad R!), if someone can improve this using an apply-function, you're most welcome! 
+#1) the script uses loops (bad R!, and places a heavy load on OADOI's servers), if someone can improve this using an apply-function, you're most welcome! 
 #2) the script currently stops executing when it encounters a HTTP status 404 for one of the DOIs checked.
 #this could probably be circumvented with try.catch(), but I don't know how (yet);
 #in the current setup, the script can be manually rerun from line 38, 
-#skipping the offending DOI by resetting the loop counter in line 73.
+#skipping the offending DOI by resetting the loop counter in line 74.
 
 #install packages
 install.packages("rjson")
@@ -28,7 +28,7 @@ install.packages("httpcache")
 require(rjson)
 require(httpcache)
 #import csv with DOIs; csv should contain list of doi's in column labeled "DOI"
-DOI_input <- read.csv(file="SciHub_downloads_NL_Utrecht_Dissemin_API_URL_check.csv", header=TRUE, sep=",")
+DOI_input <- read.csv(file="xxx.csv", header=TRUE, sep=",")
 
 #create empty dataframe with 8 columns
 df <- data.frame(matrix(nrow = 1, ncol = 8))
@@ -69,15 +69,16 @@ getData <- function(doi){
 
 #fill dataframe df (from 2nd row onwards) with API results for each DOI from original dataset
 #use counter approach to be able to test/run on subsets of data, and to manually jump any rows giving a 404 error
+#when jumping rows by changing counter, rerun the script from line 38. This way, results are added to the same dataframe 
 #reset counter range to fit number of rows in source file
-for (i in 2601:2968){
+for (i in 1:100){
   df <- rbind(df,getData(DOI_input$DOI[i]))
 }
 
-#alternatively, to try out the script, block lines 73-75, 
-#and run the script with lines 79-81 instead, using 3 example DOIs with different outputs. 
+#alternatively, to try out the script, block lines 74-76, 
+#and run the script with lines 80-82 instead, using 3 example DOIs with different outputs. 
 #df <- rbind(df,getData("10.1016/j.paid.2009.02.013"))
 #df <- rbind(df,getData("10.1001/archderm.1986.01660130056025"))
 #df <- rbind(df,getData("10.1002/0471140856.tx2306s57"))
 
-write.csv(df, file="OADOI_API_results_Utrecht-test.csv", row.names=FALSE)
+write.csv(df, file="OADOI_API_results.csv", row.names=FALSE)
