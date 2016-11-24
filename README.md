@@ -33,6 +33,7 @@ The output is a dataframe (written to a csv file) with, for each DOI, the follow
   - The script currently stops executing when it encounters a HTTP status 404 for one of the DOIs checked. 
     - This could probably be circumvented with try.catch(), but I don't know how (yet)
     - In the current setup, the script can be rerun manually, skipping the offending DOI by resetting the loop counter. 
+    
     I'm sure there is a more elegant solution! 
     
   - For some DOis, results obstained through this script are empty while Dissemin API does return results - so will need a closer look at the Dissemin API output parameters. 
